@@ -1,0 +1,43 @@
+/*
+ * Nikoms design tokens.
+ *
+ * The palette is provisional: the brand logo could not be sampled when this
+ * was built. Swap the five brand values below for the logo's colours and the
+ * whole site follows.
+ */
+@theme {
+  /* Brand */
+  --color-plum: #3e1a3d;
+  --color-plum-deep: #28102a;
+  --color-gold: #c8962e;
+  --color-gold-soft: #e4c98c;
+
+  /* Neutrals */
+  --color-ink: #1d1620;
+  --color-chalk: #f5f3f4;
+  --color-mist: #e7e1e5;
+  --color-stone: #6f646c;
+  --color-paper: #ffffff;
+
+  /* Type */
+  --font-display: var(--font-bodoni), "Bodoni 72", "Didot", Georgia, serif;
+  --font-sans: var(--font-instrument), system-ui, sans-serif;
+
+  --text-display: clamp(3.4rem, 8.5vw, 8.25rem);
+  --text-display--line-height: 0.92;
+  --text-display--letter-spacing: -0.02em;
+  --text-headline: clamp(2.25rem, 4.6vw, 4rem);
+  --text-headline--line-height: 1;
+  --text-headline--letter-spacing: -0.015em;
+  --text-title: clamp(1.5rem, 2.2vw, 1.875rem);
+  --text-title--line-height: 1.15;
+
+  /* Layout */
+  --spacing-gutter: clamp(1rem, 4vw, 3.5rem);
+  --spacing-section: clamp(5rem, 11vw, 9.5rem);
+  --container-page: 88rem;
+
+  /* Motion */
+  --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
+  --radius-card: 2px;
+}
