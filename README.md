@@ -9,7 +9,7 @@ search, and the events team replaces agents.
 
 - Next.js 16 (App Router) + TypeScript
 - Tailwind CSS v4, with design tokens in `src/styles/tokens.css`
-- Framer Motion for scroll reveals, modals, the hero and page transitions
+- Framer Motion for the scroll-driven story, reveals, modals and page transitions
 - Swiper for carousels, the continuous ticker and the lightbox (zoom + thumbs)
 - Lenis for smooth scrolling
 - React Hook Form + Zod for the enquiry and newsletter forms
@@ -42,12 +42,30 @@ Deploy to Vercel with the default Next.js settings.
 
 ## Page sections (home)
 
-Sticky header with currency switch → hero (parallax, word reveal, email
-capture) → occasions marquee → count-up stats → spaces carousel → occasions
-grid → package finder (filter modal/bottom sheet, custom multi-select
-dropdowns, counters, Load More) → services carousel → about (parallax) → team
-→ continuous set-ups ticker → viewing promo band → testimonials → journal →
-newsletter band → footer with brand links.
+An immersive scroll story in seven chapters (`src/components/story/`), in the
+spirit of morphowater.com:
+
+1. **The arrival**: CSS hall doors swing open on scroll; the hall brightens
+   behind them and the welcome copy lights up word by word.
+2. **Every story**: one pinned frame wipes from wedding to conference to
+   birthday to concert to church, with the label and package link following.
+3. **Day to night**: the same room drifts from golden hour to a lit night
+   while a clock runs from 4:00 PM to 11:30 PM.
+4. **Spaces**: vertical scroll drives a horizontal run of every space, with
+   a banquet/standing capacity toggle.
+5. **The details**: facilities set like periodic-table elements.
+6. **In the hall**: set-ups track and reviews.
+7. **Your date**: back at the doors, held half open, with enquiry and WhatsApp.
+
+Then the package finder (`#plan`) and the footer. Around it: a first-visit
+intro curtain, a glass "Explore" notch menu, a chapter rail on wide screens,
+and a floating WhatsApp button. Every chapter has a still fallback for
+`prefers-reduced-motion`.
+
+Scroll progress goes through `useChapterProgress` in
+`src/components/story/primitives.tsx`; keep using it rather than raw
+`useScroll`, or framer-motion hands opacity to the browser ViewTimeline with
+the wrong range.
 
 Other routes: `/spaces/[slug]` (details + lightbox gallery), `/journal`,
 `/journal/[slug]`.

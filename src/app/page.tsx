@@ -1,38 +1,36 @@
 import { Suspense } from "react";
-import { About } from "@/components/sections/About";
-import { Hero } from "@/components/sections/Hero";
-import { Journal } from "@/components/sections/Journal";
-import { Marquee } from "@/components/sections/Marquee";
-import { Moments } from "@/components/sections/Moments";
-import { NewsletterBand } from "@/components/sections/NewsletterBand";
-import { Occasions } from "@/components/sections/Occasions";
 import { PackageFinder } from "@/components/sections/PackageFinder";
-import { Services } from "@/components/sections/Services";
-import { Spaces } from "@/components/sections/Spaces";
-import { Stats } from "@/components/sections/Stats";
-import { Team } from "@/components/sections/Team";
-import { Testimonials } from "@/components/sections/Testimonials";
-import { ViewingBand } from "@/components/sections/ViewingBand";
+import { Arrival } from "@/components/story/Arrival";
+import { ChapterRail } from "@/components/story/ChapterRail";
+import { DayNight } from "@/components/story/DayNight";
+import { Details } from "@/components/story/Details";
+import { Finale } from "@/components/story/Finale";
+import { Intro } from "@/components/story/Intro";
+import { Nights } from "@/components/story/Nights";
+import { SpacesTrack } from "@/components/story/SpacesTrack";
+import { Stories } from "@/components/story/Stories";
 
+/**
+ * The home page is one story in seven chapters: the doors open, the hall
+ * shows every kind of event, day turns to night, you walk the spaces, see
+ * what's included and what hosts say, and end back at the doors with a date.
+ * The package finder sits after the story for visitors ready to compare.
+ */
 export default function Home() {
   return (
-    <>
-      <Hero />
-      <Marquee />
-      <Stats />
-      <Spaces />
-      <Occasions />
+    <div className="bg-night text-ivory">
+      <Intro />
+      <ChapterRail />
+      <Arrival />
+      <Stories />
+      <DayNight />
+      <SpacesTrack />
+      <Details />
+      <Nights />
+      <Finale />
       <Suspense>
         <PackageFinder />
       </Suspense>
-      <Services />
-      <About />
-      <Team />
-      <Moments />
-      <ViewingBand />
-      <Testimonials />
-      <Journal />
-      <NewsletterBand />
-    </>
+    </div>
   );
 }

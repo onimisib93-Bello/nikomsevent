@@ -3,19 +3,18 @@
 import { AnimatePresence, motion } from "framer-motion";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
-import { site } from "@/content/site";
+import { useEffect, useRef, useState } from "react";
+import { chapters, site } from "@/content/site";
 import { Icon } from "@/components/ui/Icon";
 import { useSite } from "./Providers";
-import { useLenis } from "./SmoothScroll";
 import type { Currency } from "@/lib/currency";
 
 export function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [menu, setMenu] = useState(false);
   const { openEnquiry } = useSite();
-  const lenis = useLenis();
   const pathname = usePathname();
+  const menuRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
@@ -29,18 +28,15 @@ export function Header() {
 
   useEffect(() => {
     if (!menu) return;
-    lenis?.stop();
-    document.documentElement.style.overflow = "hidden";
     const onKey = (e: KeyboardEvent) => e.key === "Escape" && setMenu(false);
+    const onPointer = (e: PointerEvent) => !menuRef.current?.contains(e.target as Node) && setMenu(false);
     document.addEventListener("keydown", onKey);
+    document.addEventListener("pointerdown", onPointer);
     return () => {
-      lenis?.start();
-      document.documentElement.style.overflow = "";
       document.removeEventListener("keydown", onKey);
+      document.removeEventListener("pointerdown", onPointer);
     };
-  }, [menu, lenis]);
-
-  const solid = scrolled && !menu;
+  }, [menu]);
 
   return (
     <>
@@ -48,86 +44,94 @@ export function Header() {
         Skip to content
       </a>
       <header
-        className={`fixed inset-x-0 top-0 z-50 transition-[background-color,box-shadow,color,height] duration-500 ease-out-soft ${
-          solid ? "bg-paper/85 text-ink shadow-[0_1px_0_rgb(29_22_32/0.08)] backdrop-blur-md" : "bg-transparent text-paper"
+        className={`fixed inset-x-0 top-0 z-50 text-ivory transition-[background-color,border-color] duration-500 ease-out-soft ${
+          scrolled ? "border-b border-ivory/[0.06] bg-night/55 backdrop-blur-md" : "border-b border-transparent bg-transparent"
         }`}
       >
-        <div className={`container-page flex items-center justify-between gap-6 transition-[height] duration-500 ${solid ? "h-16" : "h-20 md:h-24"}`}>
+        <div className="container-page flex h-16 items-center justify-between gap-4 md:h-20">
           <Link href="/" className="relative z-10 flex flex-col leading-none" aria-label={`${site.name}, home`}>
             {/* Text wordmark until the logo file is supplied (drop it in /public/brand). */}
-            <span className="font-display text-[1.7rem] tracking-tight">Nikoms</span>
-            <span className="mt-0.5 text-[0.7rem] tracking-[0.08em] opacity-75">Events Centre, Yaba</span>
+            <span className="font-display text-[1.6rem] italic tracking-tight">Nikoms</span>
+            <span className="mt-0.5 text-[0.62rem] uppercase tracking-[0.2em] opacity-70">Events Centre</span>
           </Link>
-
-          <nav aria-label="Main" className="hidden lg:block">
-            <ul className="flex items-center gap-9 text-[0.95rem]">
-              {site.nav.map((item) => (
-                <li key={item.href}>
-                  <Link href={item.href} className="relative py-2 after:absolute after:inset-x-0 after:bottom-0 after:h-px after:origin-left after:scale-x-0 after:bg-current after:transition-transform after:duration-500 hover:after:scale-x-100">
-                    {item.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </nav>
 
           <div className="relative z-10 flex items-center gap-3">
             <CurrencySwitch className="hidden sm:flex" />
             <button
               type="button"
               onClick={() => openEnquiry()}
-              className={`hidden min-h-11 items-center rounded-full px-5 text-sm font-medium transition-colors md:inline-flex ${
-                solid ? "bg-plum text-paper hover:bg-plum-deep" : "bg-paper text-plum-deep hover:bg-gold-soft"
-              }`}
+              className="inline-flex min-h-10 items-center rounded-full bg-gold-soft px-4 text-sm font-medium text-night transition-colors hover:bg-ivory sm:min-h-11 sm:px-5"
             >
-              Check a date
-            </button>
-            <button
-              type="button"
-              onClick={() => setMenu((m) => !m)}
-              aria-expanded={menu}
-              aria-controls="mobile-menu"
-              aria-label={menu ? "Close menu" : "Open menu"}
-              className="grid size-11 place-items-center rounded-full lg:hidden"
-            >
-              <Icon name={menu ? "close" : "menu"} width={24} height={24} />
+              <span className="sm:hidden">Book</span>
+              <span className="hidden sm:inline">Check a date</span>
             </button>
           </div>
         </div>
-      </header>
 
-      <AnimatePresence>
-        {menu && (
-          <motion.div
-            id="mobile-menu"
-            className="fixed inset-0 z-40 flex flex-col bg-plum-deep px-[var(--spacing-gutter)] pb-10 pt-28 text-paper lg:hidden"
-            initial={{ clipPath: "inset(0 0 100% 0)" }}
-            animate={{ clipPath: "inset(0 0 0% 0)" }}
-            exit={{ clipPath: "inset(0 0 100% 0)" }}
-            transition={{ duration: 0.6, ease: [0.76, 0, 0.24, 1] }}
-            data-lenis-prevent
+        {/* The glass "notch": a top-centre Explore menu, on every screen size */}
+        <div ref={menuRef} className="absolute left-1/2 top-0 -translate-x-1/2">
+          <button
+            type="button"
+            onClick={() => setMenu((m) => !m)}
+            aria-expanded={menu}
+            aria-controls="explore-menu"
+            className="flex h-11 items-center gap-2 rounded-b-[1.4rem] border border-t-0 border-ivory/15 bg-night/40 px-5 text-sm backdrop-blur-xl backdrop-saturate-150 transition-colors hover:bg-night/60 md:h-14 md:px-8"
           >
-            <nav aria-label="Mobile">
-              <motion.ul initial="hidden" animate="show" variants={{ show: { transition: { staggerChildren: 0.07, delayChildren: 0.25 } } }}>
-                {site.nav.map((item) => (
-                  <motion.li key={item.href} className="overflow-hidden" variants={{ hidden: { y: "100%", opacity: 0 }, show: { y: 0, opacity: 1, transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] } } }}>
-                    <Link href={item.href} onClick={() => setMenu(false)} className="block py-2 font-display text-5xl sm:text-6xl">
-                      {item.label}
-                    </Link>
-                  </motion.li>
-                ))}
-              </motion.ul>
-            </nav>
-            <motion.div className="mt-auto flex flex-col gap-6" initial={{ opacity: 0 }} animate={{ opacity: 1, transition: { delay: 0.6 } }}>
-              <CurrencySwitch />
-              <button type="button" onClick={() => { setMenu(false); openEnquiry(); }} className="min-h-12 rounded-full bg-gold font-medium text-plum-deep">
-                Check a date
-              </button>
-              <p className="text-sm text-paper/60">{site.address.line1}, {site.address.line2}</p>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+            Explore
+            <Icon name="chevronDown" width={16} height={16} className={`transition-transform duration-300 ${menu ? "rotate-180" : ""}`} />
+          </button>
+
+          <AnimatePresence>
+            {menu && (
+              <motion.div
+                id="explore-menu"
+                initial={{ opacity: 0, y: -12, scale: 0.97 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                exit={{ opacity: 0, y: -8, scale: 0.98 }}
+                transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+                className="absolute left-1/2 top-[calc(100%+0.75rem)] max-h-[80svh] w-[min(92vw,34rem)] -translate-x-1/2 origin-top overflow-y-auto rounded-2xl border border-ivory/12 bg-night-soft/[0.97] p-6 text-ivory shadow-2xl shadow-black/50"
+                data-lenis-prevent
+              >
+                <div className="grid gap-8 sm:grid-cols-[1.3fr_1fr]">
+                  <nav aria-label="Story chapters">
+                    <p className="mb-3 text-[0.65rem] uppercase tracking-[0.22em] text-gold-soft">The story</p>
+                    <ol className="space-y-1">
+                      {chapters.map((c, i) => (
+                        <li key={c.id}>
+                          <Link href={`/#${c.id}`} onClick={() => setMenu(false)} className="group flex items-baseline gap-3 py-1">
+                            <span className="w-6 text-xs tabular-nums text-ivory/45">{String(i + 1).padStart(2, "0")}</span>
+                            <span className="font-head text-lg font-light transition-colors group-hover:text-gold-soft">{c.label}</span>
+                          </Link>
+                        </li>
+                      ))}
+                    </ol>
+                  </nav>
+                  <div className="flex flex-col gap-6">
+                    <nav aria-label="Main">
+                      <p className="mb-3 text-[0.65rem] uppercase tracking-[0.22em] text-gold-soft">Plan</p>
+                      <ul className="space-y-1">
+                        {site.nav.map((item) => (
+                          <li key={item.href}>
+                            <Link href={item.href} onClick={() => setMenu(false)} className="block py-1 text-ivory/85 transition-colors hover:text-gold-soft">
+                              {item.label}
+                            </Link>
+                          </li>
+                        ))}
+                      </ul>
+                    </nav>
+                    <CurrencySwitch className="flex w-fit sm:hidden" />
+                    <p className="mt-auto text-xs leading-relaxed text-ivory/55">
+                      {site.address.line1}, {site.address.line2}
+                      <br />
+                      {site.hours}
+                    </p>
+                  </div>
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </div>
+      </header>
     </>
   );
 }

@@ -26,13 +26,23 @@ export const site = {
     { name: "Nikoms Bar & Lounge", href: "/spaces/bar-lounge" },
   ],
   nav: [
-    { label: "Spaces", href: "/#spaces" },
-    { label: "Occasions", href: "/#occasions" },
-    { label: "Plan", href: "/#plan" },
-    { label: "About", href: "/#about" },
-    { label: "Journal", href: "/#journal" },
+    { label: "Packages", href: "/#plan" },
+    { label: "The Main Hall", href: "/spaces/main-hall" },
+    { label: "Bar & Lounge", href: "/spaces/bar-lounge" },
+    { label: "Journal", href: "/journal" },
   ],
 } as const;
+
+/** The home page is told in seven chapters; the rail and Explore menu read from here. */
+export const chapters = [
+  { id: "arrival", label: "The arrival" },
+  { id: "stories", label: "Every story" },
+  { id: "day-night", label: "Day to night" },
+  { id: "spaces", label: "Spaces" },
+  { id: "details", label: "The details" },
+  { id: "nights", label: "In the hall" },
+  { id: "your-date", label: "Your date" },
+] as const;
 
 export const stats = [
   { value: 1000, suffix: "", label: "guests at full standing capacity" },

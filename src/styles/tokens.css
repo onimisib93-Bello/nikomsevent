@@ -12,6 +12,11 @@
   --color-gold: #c8962e;
   --color-gold-soft: #e4c98c;
 
+  /* Night: the cinematic home story runs on these */
+  --color-night: #0d0a10;
+  --color-night-soft: #171019;
+  --color-ivory: #f5efe6;
+
   /* Neutrals */
   --color-ink: #1d1620;
   --color-chalk: #f5f3f4;
@@ -22,6 +27,12 @@
   /* Type */
   --font-display: var(--font-bodoni), "Bodoni 72", "Didot", Georgia, serif;
   --font-sans: var(--font-instrument), system-ui, sans-serif;
+  /* Light, wide sans for story headlines; italic Bodoni carries the accent word */
+  --font-head: var(--font-outfit), var(--font-instrument), system-ui, sans-serif;
+
+  --text-story: clamp(2.6rem, 7.2vw, 6.75rem);
+  --text-story--line-height: 0.96;
+  --text-story--letter-spacing: -0.025em;
 
   --text-display: clamp(3.4rem, 8.5vw, 8.25rem);
   --text-display--line-height: 0.92;
