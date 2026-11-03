@@ -86,7 +86,8 @@ Other routes: `/spaces/[slug]` (details + lightbox gallery), `/journal`,
 - [ ] **Harvesters photos**: `service-main-hall.jpg` and `service-crowd.jpg`
       come from Google and look like Harvesters Yaba's own shots. Get their
       OK or replace them.
-- [ ] **Phone, WhatsApp, email**: marked `TODO` in `src/content/site.ts`.
+- [ ] **Email**: still a placeholder (`TODO` in `src/content/site.ts`). Phone and
+      WhatsApp use the Google listing number; confirm it is on WhatsApp.
 - [ ] **Prices and packages**: sample figures in `packages.ts` and `spaces.ts`.
       The pages say they're samples. Remove those notes once the rates are real.
 - [ ] **Reviews**: the home page shows the Google rating from `site.google`

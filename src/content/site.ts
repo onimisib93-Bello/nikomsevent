@@ -1,6 +1,6 @@
 /**
  * Business facts. Address and capacity come from public venue listings;
- * phone, email and socials marked TODO need confirming by Nikoms.
+ * the phone is from their Google listing; the email marked TODO needs confirming.
  */
 export const site = {
   name: "Nikoms Events Centre",
@@ -21,8 +21,9 @@ export const site = {
     // The topics Google picks out of the reviews
     mentions: ["Spacious hall", "Clean toilets", "Changing room"],
   },
-  phone: "+234 800 000 0000", // TODO: real number
-  whatsapp: "https://wa.me/2348000000000", // TODO: real number
+  // The number on the Google Business listing (0816 687 3941)
+  phone: "+234 816 687 3941",
+  whatsapp: "https://wa.me/2348166873941",
   email: "hello@nikomsevents.com", // TODO: real address
   hours: "Viewings Monday to Saturday, 10am to 6pm",
   socials: {
