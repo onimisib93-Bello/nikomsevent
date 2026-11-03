@@ -9,7 +9,7 @@ import { media } from "@/content/media";
 import { site } from "@/content/site";
 import { Accent, Doors, Kicker, StoryHeadline, useChapterProgress } from "./primitives";
 
-/** Chapter 07: back at the doors where the story began, now held half open for you. */
+/** Chapter 07: back at the doors where the story began, now held half open for the next booking. */
 export function Finale() {
   const ref = useRef<HTMLElement>(null);
   const p = useChapterProgress(ref);
@@ -36,7 +36,7 @@ export function Finale() {
         <motion.div style={reduce ? undefined : { opacity: contentOpacity, y: contentY }} className="container-page relative text-center">
           <Kicker n="07">Your date</Kicker>
           <StoryHeadline className="mx-auto mt-5 max-w-4xl">
-            Your night is <Accent>waiting.</Accent>
+            Let’s plan <Accent>your event.</Accent>
           </StoryHeadline>
           <p className="mx-auto mt-6 max-w-lg text-ivory/80">
             Tell us the date, the occasion and the guest count. The events desk replies with availability and a quote.

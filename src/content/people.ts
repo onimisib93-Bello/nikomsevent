@@ -14,11 +14,14 @@ export const team: TeamMember[] = [
  * SAMPLE REVIEWS for layout only. Replace with real, attributed guest
  * reviews before launch; `sample: true` renders a visible label.
  */
-export const testimonials = [
-  { quote: "Four hundred guests, one generator hum we never heard. The lights stayed on from the first dance to the last plate.", name: "Bride's family", event: "Wedding reception", sample: true },
-  { quote: "We came for the size of the hall and stayed for the team. They ran our timeline better than we did.", name: "Church programme committee", event: "Thanksgiving service", sample: true },
-  { quote: "Sound check at four, doors at seven, no drama. The technical crew knew the room.", name: "Show promoter", event: "Concert night", sample: true },
-];
+export type Testimonial = { quote: string; name: string; when: string };
+
+/**
+ * Reviews shown under the Google rating. Paste chosen reviews from the Google
+ * listing here exactly as written, with the reviewer's name as Google shows it.
+ * The section shows only the rating and the link while this is empty.
+ */
+export const testimonials: Testimonial[] = [];
 
 export const services = [
   { title: "Catering", body: "Bring your caterer or ask for our shortlist. The washing area keeps their work out of sight.", image: media.catering },

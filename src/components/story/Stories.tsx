@@ -106,8 +106,9 @@ function Intro() {
 
 /**
  * Each occasion after the first wipes up from the bottom over the one before.
- * The venue's own photos are small, mostly portrait phone shots, so a blurred
- * copy fills the screen and the photo itself sits sharp in a frame.
+ * The venue's own photos are small, mostly portrait phone shots. On a phone
+ * they fill the screen as they are; on wider screens a blurred copy fills it
+ * and the photo itself sits sharp in a frame.
  */
 function Layer({ occasion, index, progress }: { occasion: Occasion; index: number; progress: MotionValue<number> }) {
   const seg = 1 / items.length;
@@ -118,14 +119,21 @@ function Layer({ occasion, index, progress }: { occasion: Occasion; index: numbe
   const frameY = useTransform(progress, [Math.max(0, start), start + seg + 0.08], [60, -30]);
   return (
     <motion.div style={{ clipPath }} className="absolute inset-0 bg-night">
-      <motion.div style={{ scale }} className="absolute inset-0" aria-hidden="true">
-        <Image src={occasion.image.src} alt="" fill sizes="50vw" quality={60} className="scale-110 object-cover blur-2xl brightness-[0.7] saturate-[1.4]" />
+      <motion.div style={{ scale }} className="absolute inset-0">
+        <Image
+          src={occasion.image.src}
+          alt={occasion.image.alt}
+          fill
+          sizes="(min-width: 768px) 50vw, 100vw"
+          className="object-cover md:scale-110 md:blur-2xl md:brightness-[0.7] md:saturate-[1.4]"
+        />
       </motion.div>
       <motion.div
+        aria-hidden="true"
         style={{ y: frameY }}
-        className="absolute right-[var(--spacing-gutter)] overflow-hidden bg-plum-deep top-20 aspect-[4/5] w-[44vw] max-w-[30rem] shadow-2xl shadow-black/60 sm:w-[36vw] lg:top-1/2 lg:-mt-[min(18.75rem,22.5vw)] lg:w-[min(30rem,36vw)]"
+        className="absolute right-[var(--spacing-gutter)] hidden overflow-hidden bg-plum-deep aspect-[4/5] shadow-2xl shadow-black/60 md:top-24 md:block md:w-[36vw] md:max-w-[30rem] lg:top-1/2 lg:-mt-[min(18.75rem,22.5vw)] lg:w-[min(30rem,36vw)]"
       >
-        <Image src={occasion.image.src} alt={occasion.image.alt} fill sizes="(min-width: 1024px) 30rem, 44vw" className="object-cover" />
+        <Image src={occasion.image.src} alt="" fill sizes="(min-width: 1024px) 30rem, 36vw" className="object-cover" />
       </motion.div>
     </motion.div>
   );

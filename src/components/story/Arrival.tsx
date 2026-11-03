@@ -10,7 +10,7 @@ import { site } from "@/content/site";
 import { Accent, Doors, Kicker, ScrollWords, StoryHeadline, useChapterProgress } from "./primitives";
 
 const WELCOME =
-  "One air-conditioned hall for up to 1,000 guests, with its own stage, lights, sound and power that stays on.";
+  "Up to 1,000 guests in one air-conditioned hall, with its own stage, lights, sound and backup power. Bring the guest list; we have the room.";
 
 /** Chapter 01: the doors swing open on scroll and the hall comes up behind them. */
 export function Arrival() {
@@ -60,8 +60,11 @@ export function Arrival() {
         <motion.div style={{ opacity: introOpacity, y: introY }} className="absolute inset-x-0 top-[22svh] px-[var(--spacing-gutter)] text-center">
           <Kicker>Nikoms Events Centre · {site.address.line2}</Kicker>
           <StoryHeadline as="h1" className="mx-auto mt-6 max-w-5xl">
-            Tonight, the doors <Accent>open.</Accent>
+            Big day? <Accent>Bigger hall.</Accent>
           </StoryHeadline>
+          <p className="mx-auto mt-6 max-w-2xl text-sm uppercase tracking-[0.2em] text-ivory/75 sm:text-base">
+            Weddings · Owambes · Birthdays · Conferences · Church services
+          </p>
         </motion.div>
 
         <motion.div style={{ opacity: introOpacity }} className="absolute inset-x-0 bottom-8 flex flex-col items-center gap-3 text-[0.7rem] uppercase tracking-[0.24em] text-ivory/70">
@@ -86,7 +89,7 @@ function Welcome({ progress, static: isStatic }: { progress?: ReturnType<typeof 
     <div className="max-w-3xl">
       <Kicker n="01">The arrival</Kicker>
       <StoryHeadline className="mt-5">
-        Welcome <Accent>inside.</Accent>
+        Your event. <Accent>Our hall.</Accent>
       </StoryHeadline>
       {isStatic || !progress ? (
         <p className="mt-6 max-w-xl font-head text-xl font-light leading-snug text-ivory/85 sm:text-2xl">{WELCOME}</p>

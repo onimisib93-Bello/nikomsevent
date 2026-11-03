@@ -1,6 +1,6 @@
 "use client";
 
-import { createContext, useCallback, useContext, useEffect, useMemo, useState, type ReactNode } from "react";
+import { createContext, useCallback, useContext, useMemo, useState, type ReactNode } from "react";
 import type { Currency } from "@/lib/currency";
 import { SmoothScroll } from "./SmoothScroll";
 import { EnquiryModal } from "@/components/forms/EnquiryModal";
@@ -25,15 +25,7 @@ export function Providers({ children }: { children: ReactNode }) {
   const [currency, setCurrencyState] = useState<Currency>("NGN");
   const [enquiry, setEnquiry] = useState<{ open: boolean; occasion?: string; packageName?: string }>({ open: false });
 
-  useEffect(() => {
-    try {
-      const saved = localStorage.getItem(STORAGE_KEY);
-      // eslint-disable-next-line react-hooks/set-state-in-effect -- hydrate the saved preference after mount
-      if (saved === "USD" || saved === "NGN") setCurrencyState(saved);
-    } catch {
-      /* storage unavailable: keep the default */
-    }
-  }, []);
+  // Prices show in naira only; the NGN/USD switch was removed from the header.
 
   const setCurrency = useCallback((c: Currency) => {
     setCurrencyState(c);

@@ -13,7 +13,7 @@ const details = [
   { symbol: "Pw", name: "Backup power", figure: "24h", body: "Power and water that stay on through your whole event." },
   { symbol: "Sl", name: "Stage, light & sound", figure: "House rig", body: "A raised stage, lighting and PA, with a technician on duty." },
   { symbol: "Dr", name: "Dressing rooms", figure: "Private", body: "For outfit changes, the bridal party, or performers waiting to go on." },
-  { symbol: "Pk", name: "Secured parking", figure: "On site", body: "Guarded parking watched by security through the night." },
+  { symbol: "Pk", name: "Secured parking", figure: "On site", body: "Guarded parking, watched by security for the whole event." },
   { symbol: "Ct", name: "Caterers' area", figure: "Separate", body: "A washing area that keeps service out of sight of your guests." },
 ];
 

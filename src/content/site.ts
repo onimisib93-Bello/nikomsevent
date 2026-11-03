@@ -11,7 +11,15 @@ export const site = {
   address: {
     line1: "1 Taylor Drive",
     line2: "Yaba, Lagos",
-    mapUrl: "https://maps.google.com/?q=Nikoms+Event+Centre+Taylor+Drive+Yaba+Lagos",
+    mapUrl: "https://maps.google.com/?cid=14543174602299369001",
+  },
+  // From the Google Business listing, checked 3 Nov 2026. Refresh now and then.
+  google: {
+    rating: 4.1,
+    reviews: 943,
+    url: "https://maps.google.com/?cid=14543174602299369001",
+    // The topics Google picks out of the reviews
+    mentions: ["Spacious hall", "Clean toilets", "Changing room"],
   },
   phone: "+234 800 000 0000", // TODO: real number
   whatsapp: "https://wa.me/2348000000000", // TODO: real number

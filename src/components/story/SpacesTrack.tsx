@@ -3,12 +3,12 @@
 import { AnimatePresence, motion, useReducedMotion, useTransform } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { useSite } from "@/components/layout/Providers";
 import { Icon } from "@/components/ui/Icon";
 import { spaces } from "@/content/spaces";
 import { formatPrice } from "@/lib/currency";
-import { Accent, Kicker, StoryHeadline, useChapterProgress } from "./primitives";
+import { Accent, Kicker, StoryHeadline, useChapterProgress, useTrackDistance } from "./primitives";
 
 const layouts = [
   { id: "banquet", label: "Banquet", value: "700", note: "seated at round tables" },
@@ -21,20 +21,7 @@ export function SpacesTrack() {
   const track = useRef<HTMLDivElement>(null);
   const p = useChapterProgress(ref);
   const reduce = useReducedMotion();
-  const [distance, setDistance] = useState(0);
-
-  useEffect(() => {
-    const el = track.current;
-    if (!el) return;
-    const measure = () => setDistance(Math.max(0, el.scrollWidth - window.innerWidth));
-    const ro = new ResizeObserver(measure);
-    ro.observe(el);
-    window.addEventListener("resize", measure);
-    return () => {
-      ro.disconnect();
-      window.removeEventListener("resize", measure);
-    };
-  }, []);
+  const distance = useTrackDistance(track);
 
   const x = useTransform(p, [0.04, 0.96], [0, -distance]);
 

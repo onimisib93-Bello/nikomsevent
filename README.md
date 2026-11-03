@@ -45,16 +45,18 @@ Deploy to Vercel with the default Next.js settings.
 An immersive scroll story in seven chapters (`src/components/story/`), in the
 spirit of morphowater.com:
 
-1. **The arrival**: CSS hall doors swing open on scroll; the hall brightens
-   behind them and the welcome copy lights up word by word.
+1. **The arrival**: "Big day? Bigger hall." on CSS hall doors that swing
+   open on scroll; the hall brightens behind them and the welcome copy lights
+   up word by word.
 2. **Every story**: one pinned frame wipes from wedding to conference to
    birthday to concert to church, with the label and package link following.
-3. **Day to night**: the same room drifts from golden hour to a lit night
-   while a clock runs from 4:00 PM to 11:30 PM.
+3. **Day to night**: one room through a full day, 6:00 AM round to 6:00 AM,
+   the lighting following the clock and a label naming the event for the hour.
 4. **Spaces**: vertical scroll drives a horizontal run of every space, with
    a banquet/standing capacity toggle.
 5. **The details**: facilities set like periodic-table elements.
-6. **In the hall**: set-ups track and reviews.
+6. **In the hall**: real set-ups that slide left as you scroll down, then
+   the Google rating.
 7. **Your date**: back at the doors, held half open, with enquiry and WhatsApp.
 
 Then the package finder (`#plan`) and the footer. Around it: a first-visit
@@ -87,9 +89,12 @@ Other routes: `/spaces/[slug]` (details + lightbox gallery), `/journal`,
 - [ ] **Phone, WhatsApp, email**: marked `TODO` in `src/content/site.ts`.
 - [ ] **Prices and packages**: sample figures in `packages.ts` and `spaces.ts`.
       The pages say they're samples. Remove those notes once the rates are real.
-- [ ] **Reviews**: `testimonials` in `people.ts` are samples and carry a
-      visible label. Replace them with real reviews and set `sample: false`.
+- [ ] **Reviews**: the home page shows the Google rating from `site.google`
+      in `site.ts` (4.1 from 943 reviews on 3 Nov 2026); refresh it now and
+      then. To show individual reviews, paste them into `testimonials` in
+      `people.ts` exactly as written on Google.
 - [ ] **Team**: add names and direct lines in `people.ts` if wanted.
 - [ ] **Forms**: `/api/enquiry` and `/api/newsletter` validate and log only.
       Connect them to email (Resend), a CRM or a mailing list.
-- [ ] **USD rate**: `NGN_PER_USD` in `src/lib/currency.ts` is a fixed figure.
+- [ ] **Currency**: prices show in naira only (the NGN/USD switch was removed).
+      `NGN_PER_USD` in `src/lib/currency.ts` only matters if it comes back.

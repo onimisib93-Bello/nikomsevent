@@ -8,7 +8,6 @@ import { useEffect, useRef, useState } from "react";
 import { chapters, site } from "@/content/site";
 import { Icon } from "@/components/ui/Icon";
 import { useSite } from "./Providers";
-import type { Currency } from "@/lib/currency";
 
 export function Header() {
   const [scrolled, setScrolled] = useState(false);
@@ -59,7 +58,6 @@ export function Header() {
           </Link>
 
           <div className="relative z-10 flex items-center gap-3">
-            <CurrencySwitch className="hidden sm:flex" />
             <button
               type="button"
               onClick={() => openEnquiry()}
@@ -122,7 +120,6 @@ export function Header() {
                         ))}
                       </ul>
                     </nav>
-                    <CurrencySwitch className="flex w-fit sm:hidden" />
                     <p className="mt-auto text-xs leading-relaxed text-ivory/55">
                       {site.address.line1}, {site.address.line2}
                       <br />
@@ -136,29 +133,5 @@ export function Header() {
         </div>
       </header>
     </>
-  );
-}
-
-function CurrencySwitch({ className = "" }: { className?: string }) {
-  const { currency, setCurrency } = useSite();
-  const options: { value: Currency; label: string }[] = [
-    { value: "NGN", label: "₦ NGN" },
-    { value: "USD", label: "$ USD" },
-  ];
-  return (
-    <div role="radiogroup" aria-label="Currency for prices" className={`items-center rounded-full border border-current/25 p-0.5 text-xs ${className || "flex"}`}>
-      {options.map((o) => (
-        <button
-          key={o.value}
-          type="button"
-          role="radio"
-          aria-checked={currency === o.value}
-          onClick={() => setCurrency(o.value)}
-          className={`min-h-9 rounded-full px-3 transition-colors ${currency === o.value ? "bg-current/15 font-semibold" : "opacity-70 hover:opacity-100"}`}
-        >
-          {o.label}
-        </button>
-      ))}
-    </div>
   );
 }

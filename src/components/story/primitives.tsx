@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, useScroll, useTransform, type MotionValue } from "framer-motion";
-import type { ReactNode, RefObject } from "react";
+import { useEffect, useState, type ReactNode, type RefObject } from "react";
 
 type ScrollOffset = NonNullable<Parameters<typeof useScroll>[0]>["offset"];
 
@@ -15,6 +15,27 @@ type ScrollOffset = NonNullable<Parameters<typeof useScroll>[0]>["offset"];
 export function useChapterProgress(ref: RefObject<HTMLElement | null>, offset: ScrollOffset = ["start start", "end end"]) {
   const { scrollYProgress } = useScroll({ target: ref, offset });
   return useTransform(scrollYProgress, (v) => v);
+}
+
+/**
+ * How far a horizontal track overflows the screen. A pinned chapter is made
+ * this much taller than the screen, so scrolling down moves the track left.
+ */
+export function useTrackDistance(track: RefObject<HTMLElement | null>) {
+  const [distance, setDistance] = useState(0);
+  useEffect(() => {
+    const el = track.current;
+    if (!el) return;
+    const measure = () => setDistance(Math.max(0, el.scrollWidth - window.innerWidth));
+    const ro = new ResizeObserver(measure);
+    ro.observe(el);
+    window.addEventListener("resize", measure);
+    return () => {
+      ro.disconnect();
+      window.removeEventListener("resize", measure);
+    };
+  }, [track]);
+  return distance;
 }
 
 /** Small numbered label above each chapter headline, e.g. "02 — One hall, every story". */
