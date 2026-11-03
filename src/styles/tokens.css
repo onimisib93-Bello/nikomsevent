@@ -1,20 +1,20 @@
 /*
  * Nikoms design tokens.
  *
- * The palette is provisional: the brand logo could not be sampled when this
- * was built. Swap the five brand values below for the logo's colours and the
- * whole site follows.
+ * Brand values are sampled from the Nikoms logo: a brick-red ring and an
+ * orange-gold "N". The night tones lean warm so the red sits in them.
  */
 @theme {
   /* Brand */
-  --color-plum: #3e1a3d;
-  --color-plum-deep: #28102a;
-  --color-gold: #c8962e;
-  --color-gold-soft: #e4c98c;
+  --color-plum: #5a1813;
+  --color-plum-deep: #2c0c0a;
+  --color-gold: #e0952f;
+  --color-gold-soft: #f3c278;
+  --color-brand-red: #c22a1e;
 
   /* Night: the cinematic home story runs on these */
-  --color-night: #0d0a10;
-  --color-night-soft: #171019;
+  --color-night: #0e0a09;
+  --color-night-soft: #1a110f;
   --color-ivory: #f5efe6;
 
   /* Neutrals */

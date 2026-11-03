@@ -47,13 +47,13 @@ export function Arrival() {
         <motion.div style={{ scale: hallScale, filter: hallFilter }} className="absolute inset-0">
           <Image src={media.hero.src} alt={media.hero.alt} fill preload sizes="100vw" className="object-cover" />
         </motion.div>
-        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgb(13_10_16/0.55)_0%,transparent_30%,transparent_55%,rgb(13_10_16/0.92)_100%)]" />
+        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgb(14_10_9/0.55)_0%,transparent_30%,transparent_55%,rgb(14_10_9/0.92)_100%)]" />
 
         {/* Warm light escaping through the gap between the doors */}
         <motion.div
           aria-hidden="true"
           style={{ opacity: seam, scaleX: seamWidth }}
-          className="absolute inset-y-0 left-1/2 w-16 -translate-x-1/2 bg-[radial-gradient(ellipse_at_center,rgb(240_213_154/0.9),rgb(200_150_46/0.35)_45%,transparent_72%)] mix-blend-screen blur-xl"
+          className="absolute inset-y-0 left-1/2 w-16 -translate-x-1/2 bg-[radial-gradient(ellipse_at_center,rgb(248_217_160/0.9),rgb(224_149_47/0.35)_45%,transparent_72%)] mix-blend-screen blur-xl"
         />
         <Doors swing={swing} opacity={doorsFade} />
 

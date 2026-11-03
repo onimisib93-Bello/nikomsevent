@@ -24,11 +24,11 @@ export function Finale() {
   return (
     <section id="your-date" ref={ref} className={`relative ${reduce ? "" : "h-[230vh]"}`}>
       <div className={`${reduce ? "relative py-[var(--spacing-section)]" : "sticky top-0 h-svh"} flex items-center overflow-hidden`}>
-        <Image src={media.journalC.src} alt={media.journalC.alt} fill sizes="100vw" className="object-cover brightness-[0.5]" />
+        <Image src={media.court.src} alt={media.court.alt} fill sizes="100vw" className="object-cover brightness-[0.45] saturate-[0.9]" />
         <motion.div
           aria-hidden="true"
           style={reduce ? undefined : { opacity: glow }}
-          className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgb(240_213_154/0.45),transparent_55%)] mix-blend-screen"
+          className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgb(248_217_160/0.45),transparent_55%)] mix-blend-screen"
         />
         {!reduce && <Doors swing={swing} opacity={doorsIn} />}
         <div className="absolute inset-0 bg-night/35" />

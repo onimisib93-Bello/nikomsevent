@@ -1,6 +1,7 @@
 "use client";
 
 import { AnimatePresence, motion } from "framer-motion";
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
@@ -49,10 +50,12 @@ export function Header() {
         }`}
       >
         <div className="container-page flex h-16 items-center justify-between gap-4 md:h-20">
-          <Link href="/" className="relative z-10 flex flex-col leading-none" aria-label={`${site.name}, home`}>
-            {/* Text wordmark until the logo file is supplied (drop it in /public/brand). */}
-            <span className="font-display text-[1.6rem] italic tracking-tight">Nikoms</span>
-            <span className="mt-0.5 text-[0.62rem] uppercase tracking-[0.2em] opacity-70">Events Centre</span>
+          <Link href="/" className="relative z-10 flex items-center gap-2.5" aria-label={`${site.name}, home`}>
+            <Image src="/brand/logo-round.png" alt="" width={44} height={44} preload className="size-9 md:size-11" />
+            <span className="flex flex-col leading-none max-[380px]:hidden">
+              <span className="font-display text-[1.6rem] italic tracking-tight">Nikoms</span>
+              <span className="mt-0.5 text-[0.62rem] uppercase tracking-[0.2em] opacity-70">Events Centre</span>
+            </span>
           </Link>
 
           <div className="relative z-10 flex items-center gap-3">

@@ -36,6 +36,9 @@ export function Intro() {
 
   return (
     <div ref={root} aria-hidden="true" className="intro fixed inset-0 z-[100] flex flex-col items-center justify-center bg-night text-ivory">
+      {/* Plain img: the curtain must show instantly, before the image optimiser responds */}
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img src="/brand/logo-round.png" alt="" width={96} height={96} className="mb-6 size-24" />
       <p className="font-display text-6xl italic sm:text-7xl">Nikoms</p>
       <p className="mt-3 text-[0.7rem] uppercase tracking-[0.3em] text-ivory/60">Events Centre · Yaba, Lagos</p>
       <p className="absolute bottom-10 font-head text-sm font-light tabular-nums text-gold-soft">

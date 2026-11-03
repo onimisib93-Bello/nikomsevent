@@ -29,10 +29,10 @@ export const services = [
 ];
 
 export const moments = [
-  { title: "Saturday reception", guests: "600 guests", setup: "Banquet rounds", image: media.wedding },
-  { title: "Gospel concert", guests: "1,000 standing", setup: "Full stage rig", image: media.concert },
-  { title: "70th birthday", guests: "350 guests", setup: "Long tables", image: media.birthday },
-  { title: "Tech meetup", guests: "450 seated", setup: "Theatre rows", image: media.corporate },
-  { title: "Art & craft fair", guests: "800 visitors", setup: "Open floor stands", image: media.exhibition },
-  { title: "Lounge after-party", guests: "80 guests", setup: "Bar & lounge", image: media.bar },
+  { title: "Birthday party", guests: "Kids' party", setup: "Balloon arches, turf floor", image: media.birthday },
+  { title: "Wedding reception", guests: "Long tables", setup: "Purple and mint", image: media.wedding },
+  { title: "Sunday service", guests: "Harvesters Yaba", setup: "Theatre rows", image: media.church },
+  { title: "Dinner reception", guests: "Round tables", setup: "Fairy-light ceiling", image: media.tableSetting },
+  { title: "The arrival", guests: "Entrance", setup: "Floral lattice arch", image: media.foyer },
+  { title: "On the stage", guests: "House rig", setup: "Moving-head lights", image: media.stage },
 ];

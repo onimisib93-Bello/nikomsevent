@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { NewsletterForm } from "@/components/forms/NewsletterForm";
 import { Icon } from "@/components/ui/Icon";
@@ -11,7 +12,10 @@ export function Footer() {
     <footer className="bg-plum-deep text-paper">
       <div className="container-page grid gap-14 py-20 md:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1.2fr] lg:gap-10">
         <div>
-          <p className="font-display text-5xl leading-none">Nikoms</p>
+          <div className="flex items-center gap-4">
+            <Image src="/brand/logo-round.png" alt="" width={64} height={64} className="size-16" />
+            <p className="font-display text-5xl leading-none">Nikoms</p>
+          </div>
           <p className="mt-3 max-w-xs text-paper/70">{site.description}</p>
           <div className="mt-8 flex gap-3">
             <Social href={site.socials.instagram} label="Nikoms on Instagram" icon="instagram" />

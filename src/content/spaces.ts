@@ -27,7 +27,7 @@ export const spaces: Space[] = [
     features: ["Air conditioning throughout", "Built-in interior décor", "Backup power and water", "Direct access to stage and dressing rooms"],
     fromPrice: 1_800_000,
     image: media.hall,
-    gallery: [media.hall, media.hero, media.wedding, media.corporate],
+    gallery: [media.hall, media.hero, media.wedding, media.church],
   },
   {
     slug: "stage",
@@ -42,7 +42,7 @@ export const spaces: Space[] = [
     features: ["House lighting rig", "House PA and mics", "Technician on duty", "Side access from dressing rooms"],
     fromPrice: 450_000,
     image: media.stage,
-    gallery: [media.stage, media.concert, media.lighting, media.dj],
+    gallery: [media.stage, media.church, media.hall],
   },
   {
     slug: "reception-foyer",
@@ -56,7 +56,7 @@ export const spaces: Space[] = [
     features: ["Photo wall space", "Registration desk", "Cocktail hour service"],
     fromPrice: 250_000,
     image: media.foyer,
-    gallery: [media.foyer, media.court, media.catering],
+    gallery: [media.foyer, media.court, media.tableSetting],
   },
   {
     slug: "bar-lounge",
@@ -70,7 +70,7 @@ export const spaces: Space[] = [
     features: ["Stocked bar", "Lounge seating", "Music system"],
     fromPrice: 350_000,
     image: media.bar,
-    gallery: [media.bar, media.birthday, media.lighting],
+    gallery: [media.bar, media.lighting],
   },
   {
     slug: "dressing-rooms",
@@ -84,7 +84,7 @@ export const spaces: Space[] = [
     features: ["Mirrors and lighting", "Private access", "Close to the stage"],
     fromPrice: 100_000,
     image: media.dressing,
-    gallery: [media.dressing, media.wedding],
+    gallery: [media.dressing, media.sideRoom],
   },
   {
     slug: "forecourt",
@@ -98,7 +98,7 @@ export const spaces: Space[] = [
     features: ["Secured parking", "Caterers' washing area", "Security personnel"],
     fromPrice: 0,
     image: media.court,
-    gallery: [media.court, media.catering],
+    gallery: [media.court, media.sideRoom],
   },
 ];
 

@@ -11,10 +11,10 @@ const COPY =
 
 // Fixed positions so server and client render the same lights.
 const BOKEH = [
-  [8, 18, 46, "#e4c98c"], [17, 62, 28, "#f0a35e"], [26, 30, 64, "#c8962e"], [34, 78, 22, "#f5efe6"],
-  [44, 14, 38, "#e4c98c"], [52, 52, 54, "#d46a8c"], [61, 26, 24, "#f0d59a"], [69, 70, 42, "#c8962e"],
-  [77, 38, 30, "#f5efe6"], [85, 16, 58, "#e4c98c"], [91, 60, 26, "#f0a35e"], [12, 86, 34, "#d46a8c"],
-  [58, 88, 30, "#e4c98c"], [38, 46, 18, "#f5efe6"],
+  [8, 18, 46, "#f3c278"], [17, 62, 28, "#f0a35e"], [26, 30, 64, "#e0952f"], [34, 78, 22, "#f5efe6"],
+  [44, 14, 38, "#f3c278"], [52, 52, 54, "#c22a1e"], [61, 26, 24, "#f0d59a"], [69, 70, 42, "#e0952f"],
+  [77, 38, 30, "#f5efe6"], [85, 16, 58, "#f3c278"], [91, 60, 26, "#f0a35e"], [12, 86, 34, "#c22a1e"],
+  [58, 88, 30, "#f3c278"], [38, 46, 18, "#f5efe6"],
 ] as const;
 
 function clock(v: number) {
@@ -66,7 +66,7 @@ export function DayNight() {
             />
           ))}
         </motion.div>
-        <div className="absolute inset-0 bg-[linear-gradient(0deg,rgb(13_10_16/0.9)_0%,rgb(13_10_16/0.15)_50%,rgb(13_10_16/0.35)_100%)]" />
+        <div className="absolute inset-0 bg-[linear-gradient(0deg,rgb(14_10_9/0.9)_0%,rgb(14_10_9/0.15)_50%,rgb(14_10_9/0.35)_100%)]" />
 
         <div className="container-page relative flex h-full flex-col justify-end pb-[9svh] pt-28">
           <div className="mb-auto mt-4 flex items-baseline gap-4 self-end text-right">

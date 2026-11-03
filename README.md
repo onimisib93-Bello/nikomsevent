@@ -72,11 +72,18 @@ Other routes: `/spaces/[slug]` (details + lightbox gallery), `/journal`,
 
 ## Before launch: replace placeholder content
 
-- [ ] **Logo and brand colours**: the Instagram account couldn't be reached
-      from the build environment, so the palette is provisional. Add the logo
-      to `public/brand/` and update `src/styles/tokens.css`.
-- [ ] **Photos and video**: all imagery is Unsplash placeholder. Add real
-      photos to `public/media/` and update `src/content/media.ts`.
+- [ ] **Logo file**: `public/brand/logo-round.png` is a 150px copy from
+      Google. It works at header size; ask for the original (ideally SVG) and
+      swap it in, plus `src/app/icon.png` and `apple-icon.png`. The palette in
+      `src/styles/tokens.css` is already sampled from it.
+- [ ] **Photos and video**: the photos in `public/media/` are Nikoms' own,
+      but small Instagram/Google copies (mostly 640px). Ask for the originals
+      and drop them in at the same file names. Still placeholder (Unsplash):
+      bar & lounge, concerts, conferences, team, journal. No video yet; set
+      `heroVideo` in `src/content/media.ts` when there is one.
+- [ ] **Harvesters photos**: `service-main-hall.jpg` and `service-crowd.jpg`
+      come from Google and look like Harvesters Yaba's own shots. Get their
+      OK or replace them.
 - [ ] **Phone, WhatsApp, email**: marked `TODO` in `src/content/site.ts`.
 - [ ] **Prices and packages**: sample figures in `packages.ts` and `spaces.ts`.
       The pages say they're samples. Remove those notes once the rates are real.
