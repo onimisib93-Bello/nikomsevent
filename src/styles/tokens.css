@@ -1,0 +1,54 @@
+/*
+ * Nikoms design tokens.
+ *
+ * Brand values are sampled from the Nikoms logo: a brick-red ring and an
+ * orange-gold "N". The night tones lean warm so the red sits in them.
+ */
+@theme {
+  /* Brand */
+  --color-plum: #5a1813;
+  --color-plum-deep: #2c0c0a;
+  --color-gold: #e0952f;
+  --color-gold-soft: #f3c278;
+  --color-brand-red: #c22a1e;
+
+  /* Night: the cinematic home story runs on these */
+  --color-night: #0e0a09;
+  --color-night-soft: #1a110f;
+  --color-ivory: #f5efe6;
+
+  /* Neutrals */
+  --color-ink: #1d1620;
+  --color-chalk: #f5f3f4;
+  --color-mist: #e7e1e5;
+  --color-stone: #6f646c;
+  --color-paper: #ffffff;
+
+  /* Type */
+  --font-display: var(--font-bodoni), "Bodoni 72", "Didot", Georgia, serif;
+  --font-sans: var(--font-instrument), system-ui, sans-serif;
+  /* Light, wide sans for story headlines; italic Bodoni carries the accent word */
+  --font-head: var(--font-outfit), var(--font-instrument), system-ui, sans-serif;
+
+  --text-story: clamp(2.6rem, 7.2vw, 6.75rem);
+  --text-story--line-height: 0.96;
+  --text-story--letter-spacing: -0.025em;
+
+  --text-display: clamp(3.4rem, 8.5vw, 8.25rem);
+  --text-display--line-height: 0.92;
+  --text-display--letter-spacing: -0.02em;
+  --text-headline: clamp(2.25rem, 4.6vw, 4rem);
+  --text-headline--line-height: 1;
+  --text-headline--letter-spacing: -0.015em;
+  --text-title: clamp(1.5rem, 2.2vw, 1.875rem);
+  --text-title--line-height: 1.15;
+
+  /* Layout */
+  --spacing-gutter: clamp(1rem, 4vw, 3.5rem);
+  --spacing-section: clamp(5rem, 11vw, 9.5rem);
+  --container-page: 88rem;
+
+  /* Motion */
+  --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
+  --radius-card: 2px;
+}

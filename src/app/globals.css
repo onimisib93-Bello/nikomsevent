@@ -1,0 +1,140 @@
+@import "tailwindcss";
+@import "../styles/tokens.css";
+@import "swiper/css";
+
+@layer base {
+  html {
+    background: var(--color-chalk);
+    color: var(--color-ink);
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  ::selection {
+    background: var(--color-gold-soft);
+    color: var(--color-plum-deep);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-gold);
+    outline-offset: 3px;
+  }
+
+  button,
+  [role="button"],
+  a {
+    cursor: pointer;
+    touch-action: manipulation;
+  }
+}
+
+@layer utilities {
+  .container-page {
+    width: 100%;
+    max-width: var(--container-page);
+    margin-inline: auto;
+    padding-inline: var(--spacing-gutter);
+  }
+
+  /* Media frame: clips the zooming image and shows a tone while loading. */
+  .media-frame {
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(140deg, var(--color-plum) 0%, var(--color-plum-deep) 70%);
+  }
+
+  .media-frame img {
+    color: transparent; /* hide alt text while a photo loads or fails */
+    transition: transform 600ms var(--ease-out-soft);
+  }
+
+  .group:hover .media-frame img,
+  .group:focus-visible .media-frame img {
+    transform: scale(1.06);
+  }
+}
+
+/* Story: the hall doors (pure CSS so they cost nothing to load) */
+.door {
+  background:
+    repeating-linear-gradient(92deg, rgb(255 255 255 / 0.012) 0 2px, transparent 2px 9px),
+    linear-gradient(90deg, #1d0a08 0%, #3a120e 48%, #230c0a 100%);
+  box-shadow: inset 0 0 0 1px rgb(224 149 47 / 0.24), inset 0 0 80px rgb(0 0 0 / 0.55);
+  backface-visibility: hidden;
+  will-change: transform;
+}
+.door::before {
+  content: "";
+  position: absolute;
+  inset: 8% 13%;
+  border: 1px solid rgb(224 149 47 / 0.4);
+  box-shadow: inset 0 0 0 12px rgb(0 0 0 / 0.18), inset 0 0 0 13px rgb(224 149 47 / 0.22);
+}
+.door::after {
+  content: "";
+  position: absolute;
+  top: 41%;
+  height: 18%;
+  width: 7px;
+  border-radius: 9999px;
+  background: linear-gradient(180deg, #f8d9a0, #c07f22 55%, #7a4a12);
+  box-shadow: 0 0 18px rgb(243 194 120 / 0.38);
+}
+.door-left::after { right: 7%; }
+.door-right::after { left: 7%; }
+
+/* Story: bokeh lights that drift once the room turns to night */
+@keyframes drift {
+  0%, 100% { transform: translate3d(0, 0, 0); }
+  50% { transform: translate3d(0, -14px, 0); }
+}
+.bokeh {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(6px);
+  mix-blend-mode: screen;
+  animation: drift 7s ease-in-out infinite;
+}
+
+/* Story: first-visit intro. CSS lifts it even if JavaScript never runs. */
+@keyframes intro-out {
+  to { clip-path: inset(0 0 100% 0); visibility: hidden; }
+}
+.intro {
+  animation: intro-out 0.9s cubic-bezier(0.76, 0, 0.24, 1) 1.9s forwards;
+}
+@media (prefers-reduced-motion: reduce) {
+  .intro { display: none; }
+}
+
+.scrollbar-none { scrollbar-width: none; }
+.scrollbar-none::-webkit-scrollbar { display: none; }
+
+/* Lenis */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis:not(.lenis-autoToggle).lenis-stopped {
+  overflow: clip;
+}
+.lenis [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
